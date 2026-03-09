@@ -3,62 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Portfolio | Creative Developer</title>
+    <title>Anna | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS SECTION */
         :root {
-            --bg-dark: #0a0a0b;
-            --card-bg: #141416;
-            --accent: #64ffda; /* Cyber Mint */
+            --bg: #0a0a0a;
+            --accent: #64ffda;
             --text-main: #e6f1ff;
             --text-dim: #8892b0;
-            --transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            --card-bg: #112240;
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--bg);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        /* Smooth Scroll */
-        html { scroll-behavior: smooth; }
 
         /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 30px 10%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 10, 11, 0.8);
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(10px);
         }
 
-        .logo { font-weight: 700; font-size: 1.5rem; color: var(--accent); }
-
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 35px; }
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-        nav ul li a:hover { color: var(--accent); }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); letter-spacing: 2px; }
 
         /* Hero Section */
         .hero {
@@ -66,148 +49,133 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 15%;
+            padding: 0 10%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .hero span { color: var(--accent); font-family: monospace; font-size: 1.1rem; }
-        .hero h1 { font-size: clamp(40px, 8vw, 80px); margin: 10px 0; color: #ccd6f6; }
-        .hero p { max-width: 500px; color: var(--text-dim); font-size: 1.2rem; }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 18px 30px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 40px;
-            font-weight: bold;
-            transition: var(--transition);
-            width: fit-content;
-        }
-
-        .btn:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
+        .hero span { color: var(--accent); font-family: monospace; font-size: 1rem; margin-bottom: 10px; display: block; }
+        .hero h1 { font-size: clamp(50px, 10vw, 90px); color: #ccd6f6; line-height: 1.1; }
+        .hero p { max-width: 540px; color: var(--text-dim); font-size: 1.1rem; margin-top: 20px; }
 
         /* Projects Section */
-        section { padding: 100px 15%; }
-        h2 { font-size: 2rem; margin-bottom: 50px; display: flex; align-items: center; }
-        h2::after { content: ""; display: block; width: 300px; height: 1px; background: var(--text-dim); margin-left: 20px; opacity: 0.3; }
+        #work { padding: 100px 10%; max-width: 1200px; margin: 0 auto; }
+        h2 { font-size: 2rem; margin-bottom: 40px; color: #ccd6f6; display: flex; align-items: center; }
+        h2::after { content: ""; width: 200px; height: 1px; background: var(--accent); margin-left: 20px; opacity: 0.5; }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
         .card {
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            transition: var(--transition);
+            padding: 35px;
+            border-radius: 6px;
             border: 1px solid transparent;
-            opacity: 0; /* Hidden initially for JS animation */
-            transform: translateY(30px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
+            transform: translateY(-10px);
             border-color: var(--accent);
-            transform: translateY(-10px) !important;
+            box-shadow: 0 20px 30px -15px rgba(2,12,27,0.7);
         }
 
-        .card h3 { margin-bottom: 15px; color: #ccd6f6; }
-        .card p { font-size: 0.9rem; color: var(--text-dim); }
+        .card-icon { color: var(--accent); font-size: 2rem; margin-bottom: 20px; font-family: monospace; }
+        .card h3 { font-size: 1.4rem; color: #ccd6f6; margin-bottom: 15px; }
+        .card p { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 25px; }
 
-        /* Animation Class */
-        .reveal-active {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+        .btn-small {
+            text-decoration: none;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid var(--accent);
+            padding: 8px 16px;
+            border-radius: 4px;
+            align-self: flex-start;
+            transition: var(--transition);
         }
+
+        .btn-small:hover { background: rgba(100, 255, 218, 0.1); }
 
         footer {
             text-align: center;
-            padding: 50px;
-            font-size: 0.8rem;
+            padding: 60px 0;
             color: var(--text-dim);
+            font-size: 0.8rem;
+            font-family: monospace;
         }
+
+        /* Scroll Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">YNGDEV<span>_</span></div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-        </ul>
+        <div class="logo">YNGDEVELOP<span>_</span></div>
     </nav>
 
     <main>
-        <header class="hero" id="about">
-            <span>Hi, my name is</span>
-            <h1>Anna</h1>
-            <p>I build exceptional digital experiences. I'm a software engineer specializing in building (and occasionally designing) functional and aesthetic web applications.</p>
-            <a href="#work" class="btn">Check out my projects!</a>
-        </header>
- <div class="card">
-    <h3>ZenTask Manager</h3>
-    <p>A productivity tool focused on speed and simplicity.</p>
-    <a href="project1.html" class="btn">View Live Demo</a>
- </div>
+        <section class="hero">
+            <span class="reveal">Hi, my name is</span>
+            <h1 class="reveal">Anna.</h1>
+            <p class="reveal">I am a Web Developer focused on building clean, functional, and user-centric digital solutions. Take a look at my latest work below.</p>
+        </section>
 
- <div class="card">
-    <h3>Aura Weather</h3>
-    <p>Modern glassmorphism weather dashboard.</p>
-    <a href="project2.html" class="btn">View Live Demo</a>
- </div>
+        <section id="work">
+            <h2 class="reveal">Selected Projects</h2>
+            <div class="grid">
+                
+                <div class="card reveal">
+                    <div class="card-icon">01</div>
+                    <h3>ZenTask Manager</h3>
+                    <p>A minimalist task management tool built with pure JavaScript and local data persistence.</p>
+                    <a href="project1.html" class="btn-small">Launch Project</a>
+                </div>
 
- <div class="card">
-    <h3>CryptoConvert</h3>
-    <p>Real-time financial calculation engine.</p>
-    <a href="project3.html" class="btn">View Live Demo</a>
- </div>
+                <div class="card reveal">
+                    <div class="card-icon">02</div>
+                    <h3>Aura Weather</h3>
+                    <p>An interactive weather dashboard using glassmorphism design and dynamic state management.</p>
+                    <a href="project2.html" class="btn-small">Launch Project</a>
+                </div>
+
+                <div class="card reveal">
+                    <div class="card-icon">03</div>
+                    <h3>CryptoConvert</h3>
+                    <p>Financial calculator for real-time cryptocurrency conversions with precision logic.</p>
+                    <a href="project3.html" class="btn-small">Launch Project</a>
+                </div>
+
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>Designed & Built by Anna &copy; 2026</p>
+        &copy; 2026 Designed & Built by Anna
     </footer>
 
     <script>
-        // JAVASCRIPT SECTION
-        // Intersection Observer for Reveal Animations
-        const observerOptions = {
-            threshold: 0.15
-        };
-
-        const revealOnScroll = new IntersectionObserver((entries) => {
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-active');
+                    entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        // Apply observer to all cards
-        document.querySelectorAll('.card').forEach(card => {
-            revealOnScroll.observe(card);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.padding = "10px 8%";
-                nav.style.boxShadow = "0 10px 30px -10px rgba(2,12,27,0.7)";
-            } else {
-                nav.style.padding = "20px 8%";
-                nav.style.boxShadow = "none";
-            }
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
-
 </html>
