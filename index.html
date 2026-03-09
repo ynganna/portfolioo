@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolio | Creative Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS SECTION */
+        :root {
+            --bg-dark: #0a0a0b;
+            --card-bg: #141416;
+            --accent: #64ffda; /* Cyber Mint */
+            --text-main: #e6f1ff;
+            --text-dim: #8892b0;
+            --transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 11, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-weight: 700; font-size: 1.5rem; color: var(--accent); }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 35px; }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        nav ul li a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 15%;
+        }
+
+        .hero span { color: var(--accent); font-family: monospace; font-size: 1.1rem; }
+        .hero h1 { font-size: clamp(40px, 8vw, 80px); margin: 10px 0; color: #ccd6f6; }
+        .hero p { max-width: 500px; color: var(--text-dim); font-size: 1.2rem; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 18px 30px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 40px;
+            font-weight: bold;
+            transition: var(--transition);
+            width: fit-content;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Projects Section */
+        section { padding: 100px 15%; }
+        h2 { font-size: 2rem; margin-bottom: 50px; display: flex; align-items: center; }
+        h2::after { content: ""; display: block; width: 300px; height: 1px; background: var(--text-dim); margin-left: 20px; opacity: 0.3; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            opacity: 0; /* Hidden initially for JS animation */
+            transform: translateY(30px);
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px) !important;
+        }
+
+        .card h3 { margin-bottom: 15px; color: #ccd6f6; }
+        .card p { font-size: 0.9rem; color: var(--text-dim); }
+
+        /* Animation Class */
+        .reveal-active {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">YNGDEV<span>_</span></div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="hero" id="about">
+            <span>Hi, my name is</span>
+            <h1>Anna</h1>
+            <p>I build exceptional digital experiences. I'm a software engineer specializing in building (and occasionally designing) functional and aesthetic web applications.</p>
+            <a href="#work" class="btn">Check out my projects!</a>
+        </header>
+
+        <section id="work">
+            <h2>Some Things I've Built</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>CloudSync Pro</h3>
+                    <p>A high-performance file synchronization tool built with modern JavaScript and encrypted storage protocols.</p>
+                </div>
+                <div class="card">
+                    <h3>Aura Interface</h3>
+                    <p>A sleek, minimalist UI kit designed for futuristic dashboard applications and data visualization.</p>
+                </div>
+                <div class="card">
+                    <h3>Eco-Track API</h3>
+                    <p>Robust backend service for monitoring carbon footprints in real-time using distributed systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center;">
+            <h2>Get In Touch</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!</p>
+            <a href="mailto:hello@example.com" class="btn">Say Hello</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Designed & Built by Alex Morgan &copy; 2026</p>
+    </footer>
+
+    <script>
+        // JAVASCRIPT SECTION
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const revealOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                }
+            });
+        }, observerOptions);
+
+        // Apply observer to all cards
+        document.querySelectorAll('.card').forEach(card => {
+            revealOnScroll.observe(card);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = "10px 8%";
+                nav.style.boxShadow = "0 10px 30px -10px rgba(2,12,27,0.7)";
+            } else {
+                nav.style.padding = "20px 8%";
+                nav.style.boxShadow = "none";
+            }
+        });
+    </script>
+</body>
+</html>
